@@ -1,15 +1,12 @@
+ExUnit.start()
+
 defmodule OrdenacaoLista do
-  @doc """
-  Ordena uma lista de inteiros.
-
-  ## Exemplos
-
-      iex> OrdenacaoLista.run([3, 1, 4, 1, 5, 9, 2, 6])
-      [1, 1, 2, 3, 4, 5, 6, 9]
-  """
   @spec run(list(integer)) :: list(integer)
-  def run(lista) do
-    # FIXME
+  def run([]), do: []
+  def run([pivot | rest]) do
+    smaller = for x <- rest, x <= pivot, do: x
+    greater = for x <- rest, x > pivot, do: x
+    run(smaller) ++ [pivot] ++ run(greater)
   end
 end
 
@@ -18,6 +15,7 @@ defmodule OrdenacaoListaTest do
 
   test "ordena uma lista de inteiros" do
     assert OrdenacaoLista.run([5, 3, 4, 1, 2]) == [1, 2, 3, 4, 5]
+    assert OrdenacaoLista.run([3, 5, 1, 4, 2]) == [1, 2, 3, 4, 5]
   end
 
   test "ordena uma lista já ordenada" do

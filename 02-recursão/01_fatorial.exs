@@ -1,19 +1,9 @@
 ExUnit.start()
 
 defmodule Fatorial do
-  @doc """
-  Implementar uma função que calcula o fatorial
-  de um número n utilizando recursão.
-
-  ## Dicas
-
-  O fatorial de um número se dá pela multiplicação dele mesmo
-  com o resultado do fatorial de seu antecessor.
-  """
   @spec run(integer) :: integer
-  def run(n) do
-    # FIXME
-  end
+  def run(0), do: 1
+  def run(n) when n > 0, do: n * run(n - 1)
 end
 
 defmodule FatorialTest do

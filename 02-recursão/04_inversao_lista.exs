@@ -1,14 +1,9 @@
 ExUnit.start()
 
 defmodule InversaoLista do
-  @doc """
-  Implementar uma função que inverte a ordem
-  dos elementos em uma lista usando recursão.
-  """
   @spec run(list(integer)) :: list(integer)
-  def run(xs) do
-    # FIXME
-  end
+  def run([]), do: []
+  def run([head | tail]), do: run(tail) ++ [head]
 end
 
 defmodule InversaoListaTest do

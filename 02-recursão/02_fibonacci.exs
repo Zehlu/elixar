@@ -1,22 +1,21 @@
 ExUnit.start()
 
 defmodule Fibonnacci do
-  @doc """
-  A função de fibonnaci deve receber um inteiro
-  e retornar a sequência de fibonnaci como uma lista,
-   com o tamanho representado pelo primeiro parâmetro.
 
-  Exemplo: Fibonacci.run(2) # 1 1
-  Exemplo: Fibonacci.run(5) # 1 1 2 3 5
-  Exemplo: Fibonacci.run(8) # 1 1 2 3 5 8 13 21
-
-  Lembre que a sequência de fibonnacci se dá pela soma
-  de um número da sequência somado ao seu antecessor.
-  """
   @spec run(integer) :: list(integer)
-  def run(n) do
-    # FIXME
+  def run(n) when n >= 0 do
+    run(n, [])
   end
+
+  defp run(0, acc), do: Enum.reverse(acc)
+  defp run(n, []) when n > 0, do: run(n - 1, [1])
+  defp run(n, [x | _] = acc) when n > 0 do
+    run(n - 1, [fibonacci_term(acc) | acc])
+  end
+
+  defp fibonacci_term([x]), do: x
+  defp fibonacci_term([x, y | _]), do: x + y
+  
 end
 
 defmodule FibonnacciTest do

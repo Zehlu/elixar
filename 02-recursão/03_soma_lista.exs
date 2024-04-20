@@ -1,14 +1,9 @@
 ExUnit.start()
 
 defmodule SomaLista do
-  @doc """
-  Desenvolver uma função recursiva para somar
-  todos os elementos de uma lista.
-  """
   @spec run(list(integer)) :: integer
-  def run(xs) do
-    # FIXME
-  end
+  def run([]), do: 0
+  def run([head | tail]), do: head + run(tail)
 end
 
 defmodule SomaListaTest do

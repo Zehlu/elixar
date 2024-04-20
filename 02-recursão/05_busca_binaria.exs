@@ -1,26 +1,19 @@
 ExUnit.start()
 
 defmodule BuscaBinaria do
-  @doc """
-  Escrever uma função de pesquisa binária
-  recursiva para uma lista ordenada. A função
-  vai receber uma lista de elementos e um elemento
-  que pode ou não ser encontrado na lista.
-
-  A funçåo deve retornar `true` caso o elemento
-  se encontre na lista ou `false` caso o elemento
-  não exista na lista.
-
-  ## Dicas
-  - caso base ocorre quando o elemento é encontrado ou a sublista a ser pesquisada está vazia.
-  - Determine o elemento médio da lista/sublista.
-  - Se o elemento de busca for igual ao médio, retorne o elemento.
-    Se for menor, repita a busca na metade inferior. Se for maior, na metade superior.
-  """
   @spec run(list(integer), integer) :: boolean
+  def run([], _), do: false
+
   def run(xs, x) do
-    # FIXME
-    :error
+    middle_index = div(length(xs), 2)
+    middle_element = Enum.at(xs, middle_index)
+
+    cond do
+      middle_element == x -> true
+      length(xs) == 1 -> false
+      x < middle_element -> run(Enum.slice(xs, 0, middle_index), x)
+      true -> run(Enum.slice(xs, middle_index + 1, length(xs)), x)
+    end
   end
 end
 

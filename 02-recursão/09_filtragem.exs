@@ -1,15 +1,9 @@
+ExUnit.start()
+
 defmodule FiltragemLista do
-  @doc """
-  Filtra elementos de uma lista utilizando uma função de filtro.
-
-  ## Exemplos
-
-      iex> FiltragemLista.run([1, 2, 3, 4, 5], fn x -> rem(x, 2) == 0 end)
-      [2, 4]
-  """
   @spec run(list, (any -> boolean)) :: list
   def run(lista, filtro) do
-    # FIXME
+    Enum.filter(lista, filtro)
   end
 end
 

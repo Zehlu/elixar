@@ -1,18 +1,9 @@
+ExUnit.start()
+
 defmodule ContagemElementos do
-  @doc """
-  Calcula a quantidade de elementos presentes em uma lista.
-
-  ## Exemplos
-
-      iex> ContagemElementos.run([])
-      0
-
-      iex> ContagemElementos.run([1, 2, 3])
-      3
-  """
   @spec run(list) :: integer
   def run(lista) do
-    # FIXME
+    length(lista)
   end
 end
 
