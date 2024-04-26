@@ -1,20 +1,17 @@
 ExUnit.start()
 
 defmodule Soma do
-  @doc """
-  A função de soma deve receber dois números inteiros
-  e retornar o resultado da soma entre esses dois números.
-
-  Essa funçåo não deve aceitar nenhum outro tipo de dado
-  a não ser números inteiros. Tome cuidado com valores nulos.
-
-  ## Dicas
-  - [`Kernel.+/2`](https://hexdocs.pm/elixir/Kernel.html#+/2)
-  """
+  
   @spec run(integer, integer) :: integer | :error
-  def run(a, b) do
-    # FIXME
+  def run(a, b) when is_integer(a) and is_integer(b) do
+    if is_nil(a) or is_nil(b) do
+      :error
+    else
+      a + b
+    end
   end
+
+  def run(_a, _b), do: :error
 end
 
 defmodule SomaTest do

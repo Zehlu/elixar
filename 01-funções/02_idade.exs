@@ -1,26 +1,21 @@
 ExUnit.start()
 
 defmodule Idade do
-  @doc """
-  A funçåo de classificação de idade deve receber um número
-  interiro e retornar um átomo que representa a fase da vida
-  daquela pessoa. A função deve aceitar apenas números interios
-  positivos.
 
-  Segue abaixo as classificações:
-  `:infantil` -> entre 0 e 12 anos
-  `:adolescente` -> entre 13 e 24 anos
-  `:adulto` -> entre 25 e 59 anos
-  `:idoso` -> 60 ou mais anos
-
-  ## Dicas
-  - [`if/2`](https://hexdocs.pm/elixir/case-cond-and-if.html#cond)
-  - [`cond/1`](https://hexdocs.pm/elixir/case-cond-and-if.html#cond)
-  """
   @spec run(integer) :: :infantil | :adolescente | :adulto | :idoso | :error
-  def run(idade) do
-    # FIXME
+  def run(idade) when is_integer(idade) do
+    if idade < 0 do
+      :error
+    else
+      cond do
+        idade <= 12 -> :infantil
+        idade <= 24 -> :adolescente
+        idade <= 59 -> :adulto
+        true -> :idoso
+      end
+    end
   end
+  def run(_), do: :error
 end
 
 defmodule IdadeTest do
