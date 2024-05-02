@@ -1,27 +1,16 @@
 ExUnit.start()
 
 defmodule CriacaoStruct do
-  @doc """
-  Cria uma struct para representar um ponto no espaço 2D e uma função para mover o ponto.
 
-  ## Dicas
-  - Defina uma struct com campos para coordenadas x e y.
-  - Crie uma função que recebe uma struct ponto e um par de valores para mover o ponto.
+  defstruct x: 0, y: 0
 
-  ## Exemplos
-
-      iex> ponto = CriacaoStruct.criar(2, 3)
-      iex> CriacaoStruct.mover(ponto, 5, 7)
-      %{x: 7, y: 10}
-  """
   @spec criar(integer, integer) :: map
   @spec mover(map, integer, integer) :: map
-  def criar(x, y) do
-    # FIXME
-  end
+
+  def criar(x, y), do: %__MODULE__{x: x, y: y}
 
   def mover(ponto, dx, dy) do
-    # FIXME
+    %{ x: ponto.x + dx, y: ponto.y + dy }
   end
 end
 

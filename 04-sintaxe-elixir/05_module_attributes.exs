@@ -1,20 +1,11 @@
 ExUnit.start()
 
 defmodule UsoModuleAttributes do
-  @doc """
-  Demonstra o uso de module attributes como constantes.
+  @valor_constante 42
 
-  ## Dicas
-  - Defina um ou mais module attributes para serem usados como constantes dentro do módulo.
-
-  ## Exemplos
-
-      iex> UsoModuleAttributes.run()
-      "O valor da constante é: 42"
-  """
   @spec run() :: String.t()
   def run() do
-    # FIXME
+    "O valor da constante é: #{@valor_constante}"
   end
 end
 

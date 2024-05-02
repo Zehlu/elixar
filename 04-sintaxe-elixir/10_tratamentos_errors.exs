@@ -1,20 +1,15 @@
 ExUnit.start()
 
 defmodule TratamentoErros do
-  @doc """
-  Usa try/rescue para tratar erros ao tentar acessar uma chave em um mapa.
 
-  ## Dicas
-  - Use try/rescue para capturar o erro `KeyError` quando uma chave não existir no mapa.
-
-  ## Exemplos
-
-      iex> TratamentoErros.run(%{a: 1}, :b)
-      "Chave não encontrada"
-  """
   @spec run(map, atom) :: String.t()
   def run(mapa, chave) do
-    # FIXME
+    try do
+      Map.fetch!(mapa, chave)
+    rescue
+      KeyError ->
+        "Chave não encontrada"
+    end
   end
 end
 

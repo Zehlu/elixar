@@ -1,21 +1,13 @@
 ExUnit.start()
 
 defmodule CompreensaoLista do
-  @doc """
-  Usa compreensões de lista para filtrar e transformar números.
 
-  ## Dicas
-  - Utilize compreensões de lista para filtrar números pares e então quadruplicá-los.
-
-  ## Exemplos
-
-      iex> CompreensaoLista.run([1, 2, 3, 4, 5, 6])
-      [8, 16, 24]
-  """
   @spec run(list(integer)) :: list(integer)
   def run(nums) do
-    # FIXME
+    for num <- nums, is_even(num), do: num * 4
   end
+
+  defp is_even(num), do: rem(num, 2) == 0
 end
 
 defmodule CompreensaoListaTest do

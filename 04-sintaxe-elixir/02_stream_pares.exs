@@ -1,20 +1,10 @@
 ExUnit.start()
 
 defmodule StreamNumerosPares do
-  @doc """
-  Cria uma sequência infinita de números pares usando `Stream` e retorna os primeiros 5 números.
-
-  ## Dicas
-  - Utilize `Stream.iterate/2` para criar a sequência e `Enum.take/2` para pegar os primeiros 5 números.
-
-  ## Exemplos
-
-      iex> StreamNumerosPares.run()
-      [2, 4, 6, 8, 10]
-  """
   @spec run() :: list(integer)
   def run() do
-    # FIXME
+    Stream.iterate(2, &(&1 + 2))
+    |> Enum.take(5)
   end
 end
 
