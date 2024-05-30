@@ -1,24 +1,18 @@
 ExUnit.start()
 
 defmodule ContagemMaioresQue do
-  @doc """
-  Conta quantos elementos em uma lista são maiores que um dado número N, utilizando recursão.
 
-  ## Dicas
-  - Considere o caso base onde a lista é vazia.
-
-  ## Exemplos
-
-      iex> ContagemMaioresQue.run([1, 2, 3, 4, 5], 3)
-      2
-
-      iex> ContagemMaioresQue.run([1, 2, 3], 5)
-      0
-  """
   @spec run(list(integer), integer) :: integer
   def run(nums, n) do
-    # FIXME
+    count_greater(nums, n, 0)
   end
+
+  defp count_greater([], _n, acc), do: acc
+  defp count_greater([head | tail], n, acc) do
+    new_acc = if head > n, do: acc + 1, else: acc
+    count_greater(tail, n, new_acc)
+  end
+
 end
 
 defmodule ContagemMaioresQueTest do

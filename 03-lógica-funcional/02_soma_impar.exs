@@ -1,24 +1,16 @@
 ExUnit.start()
 
 defmodule SomaImpares do
-  @doc """
-  Soma todos os números ímpares em uma lista de inteiros utilizando recursão.
 
-  ## Dicas
-  - Você pode usar a função `rem/2` para verificar se um número é ímpar.
-  - Considere o caso base de uma lista vazia.
-
-  ## Exemplos
-
-      iex> SomaImpares.run([1, 2, 3, 4, 5])
-      9
-
-      iex> SomaImpares.run([])
-      0
-  """
   @spec run(list(integer)) :: integer
   def run(nums) do
-    # FIXME
+    do_run(nums, 0)
+  end
+
+  defp do_run([], acc), do: acc
+  defp do_run([head | tail], acc) do
+    new_acc = if rem(head, 2) != 0, do: acc + head, else: acc
+    do_run(tail, new_acc)
   end
 end
 
@@ -26,7 +18,7 @@ defmodule SomaImparesTest do
   use ExUnit.Case, async: true
 
   test "soma números ímpares em uma lista" do
-    assert SomaImpares.run([1, 2, 3, 4, 5]) == 9
+    assert SomaImpares.run([1, 2, 3, 4, 5, 6, 7]) == 16
   end
 
   test "retorna 0 para uma lista vazia" do

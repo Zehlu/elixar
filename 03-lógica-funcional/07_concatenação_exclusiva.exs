@@ -1,25 +1,14 @@
 ExUnit.start()
 
 defmodule ConcatenacaoExclusiva do
-  @doc """
-  Concatena duas listas, excluindo da primeira lista os elementos já presentes na segunda.
 
-  ## Dicas
-  - Utilize recursão para percorrer a primeira lista e verificar se um elemento está na segunda lista.
-  - Pode ser útil criar uma função auxiliar para verificar se um elemento está contido em uma lista.
-
-  ## Exemplos
-
-      iex> ConcatenacaoExclusiva.run([1, 2, 3], [3, 4, 5])
-      [1, 2, 4, 5]
-
-      iex> ConcatenacaoExclusiva.run([], [1, 2, 3])
-      [1, 2, 3]
-  """
   @spec run(list(any), list(any)) :: list(any)
   def run(lista1, lista2) do
-    # FIXME
+    exclusivos1 = lista1 |> Enum.filter(&(&1 not in lista2))
+    exclusivos2 = lista2 |> Enum.filter(&(&1 not in lista1))
+    exclusivos1 ++ exclusivos2
   end
+
 end
 
 defmodule ConcatenacaoExclusivaTest do

@@ -1,24 +1,12 @@
 ExUnit.start()
 
 defmodule Subconjuntos do
-  @doc """
-  Retorna todos os subconjuntos possíveis de uma lista.
-
-  ## Dicas
-  - Uma abordagem recursiva pode considerar dois casos para cada elemento: incluindo ou não o elemento no subconjunto.
-  - Lembre-se de que o conjunto vazio é um subconjunto de qualquer conjunto.
-
-  ## Exemplos
-
-      iex> Subconjuntos.run([1, 2])
-      [[], [1], [2], [1, 2]]
-
-      iex> Subconjuntos.run([])
-      [[]]
-  """
   @spec run(list(any)) :: list(list(any))
-  def run(lista) do
-    # FIXME
+  def run(lista), do: subconjuntos(lista)
+
+  defp subconjuntos([]), do: [[]]
+  defp subconjuntos([h | t]) do
+    subconjuntos(t) ++ Enum.map(subconjuntos(t), &([h | &1]))
   end
 end
 
